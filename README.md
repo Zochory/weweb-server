@@ -146,6 +146,8 @@ You can generate a new Private Key at any time but this will invalidate the old 
 
 [Activate a version in you weweb-server](#activate-a-version-in-you-weweb-server)
 
+[List versions of a project in you weweb-server](#list-versions-of-a-project-in-you-weweb-server)
+
 #### Typical auto deploy script
 
 A typical auto deploy script should be :
@@ -294,5 +296,28 @@ A typical auto deploy script should be :
 ```
 {
 	"success": true,    //Success, can be `true` or `false`
+}
+```
+
+### List versions of a project in you weweb-server
+
+**_This request is done directly to your weweb-server_**
+
+-   **Method** : `GET`
+-   **URL** :
+    `https://<YOUR WEWEB-SERVER URL>/public/v1/project/{{:projectId}}/versions`
+    `:projectId` can be found in the URL of the project
+-   **Returns** :
+
+```
+{
+	"success": true,          //Success, can be `true` or `false`
+	"data": [
+		{
+			"version": 1,     //Version number
+			"prod": true,     //Whether the version is active in production or not
+			"staging": false  //Whether the version is active in staging or not
+		}
+	]
 }
 ```
